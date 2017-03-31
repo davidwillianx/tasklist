@@ -46,7 +46,7 @@ export class TaskListComponent implements OnInit {
   }
 
   deleteTask(task){
-    
+
     this.startAjaxRequest.emit();
 
     this.taskListService.deleteTask$(task)
@@ -54,6 +54,16 @@ export class TaskListComponent implements OnInit {
             response => this.loadTasks(),
             error => console.log('We got error desc.: ' + error)
           );
+  }
+
+  changeStatusTask(task){
+    this.startAjaxRequest.emit();
+
+    this.taskListService.updateTaskCheckedStatus$(task)
+          .subscribe(
+             response => this.loadTasks(),
+             error => console.log('we got error.: ' + error)
+          )
   }
 
 

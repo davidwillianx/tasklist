@@ -4,22 +4,23 @@ const express = require('express');
 const mongojs = require('mongojs');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-
-
 const app = new express();
+
+let userCollection;
+
 app.use(bodyParser.json());
+app.use(loadUserCollectionMiddleware);
 
 app.get('/', getTaks);
 app.post('/', addTask);
 app.delete('/', deleteTask);
+app.put('/', changeStatusTask)
 
 
 module.exports = app;
 
 
 function getTaks(req, res){
-
-  let userCollection = loadUserCollection(req.webtaskContext);
 
   userCollection
          .find()
@@ -30,23 +31,38 @@ function getTaks(req, res){
 }
 
 function addTask(req, res) {
-    let userCollection = loadUserCollection(req.webtaskContext);
 
     userCollection.save({
        createdAt: new Date(),
-       description: req.body.description
+       description: req.body.description,
+       done: false
     }, () => res.end());
 }
 
-function deleteTask(req, res) {
+function changeStatusTask(req, res){
+  
+  userCollection.update(
+    { _id: mongojs.ObjectId(req.body.id) },
+    {$set: { done: !req.body.done } },
+    () => res.end()
+  );
 
-   let userCollection = loadUserCollection(req.webtaskContext);
+}
+
+function deleteTask(req, res) {
 
    userCollection
        .remove(
            { _id: mongojs.ObjectId(req.query.id)},
            () => res.end()
    );
+
+}
+
+
+function loadUserCollectionMiddleware(req, res, next){
+  userCollection = loadUserCollection(req.webtaskContext);
+  next();
 }
 
 function loadUserCollection(webtaskContext){

@@ -15,6 +15,9 @@ export class TaskFormComponent {
   public task: String = null;
 
   addTask() {
+    
+    if(!this.task)return;
+
     this.taskAdded.emit(this.task);
     this.task = null;
   }

@@ -1,8 +1,14 @@
-<div class="task-form">
-  <md-input-container>
-    <input mdInput [(ngModel)]="task" placeholder="Create new task">
+<div class="row"
+  fxFlexLayout="row"
+  fxLayoutAlign="center"
+>
+  <md-input-container fxFlex="70"  class="task-input">
+    <input mdInput [(ngModel)]="task" (keyup.enter)="addTask()" placeholder="Create new task">
   </md-input-container>
-  <button md-button md-raised-button color="primary"
+  <!--  KeyUp event triggerd all we need (no need button anymore)  -->
+  <!-- <button md-button color="primary"
     (click)="addTask()"
-   name="button">Add</button>
+   name="addNewTask" [disabled]="task === null ">
+   <md-icon>add</md-icon>
+ </button> -->
 </div>

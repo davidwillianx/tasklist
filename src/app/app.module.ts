@@ -16,6 +16,8 @@ import { TaskFormComponent } from './task-list/task-form/task-form.component';
 import { TaskListService }  from './task-list/task-list.service';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
+import { FlexLayoutModule }  from "@angular/flex-layout";
+
 export function authHttpFactory(http: Http, options: RequestOptions) {
     return new AuthHttp(
          new AuthConfig(),
@@ -37,6 +39,7 @@ export function authHttpFactory(http: Http, options: RequestOptions) {
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot(),
     SlimLoadingBarModule.forRoot()
   ],
   providers: [
