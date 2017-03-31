@@ -1,6 +1,6 @@
 # TaskList
+Get started angular2 creating a ToDo list app based on this article > https://medium.freecodecamp.com/serverless-rest-api-with-angular-persistence-and-security-ff274f04e3d0
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
 
