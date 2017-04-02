@@ -23,10 +23,10 @@ module.exports = app;
 function getTaks(req, res){
 
   userCollection
-         .find()
-         .sort({ createdAt: -1 }, (error, data) => {
-            res.status(error ? 500: 200)
-                 .send(error || data);
+      .find()
+      .sort({ createdAt: -1 }, (error, data) => {
+              res.status(error ? 500: 200)
+              .send(error || data);
          });
 }
 
@@ -40,9 +40,9 @@ function addTask(req, res) {
 }
 
 function changeStatusTask(req, res){
-  
+
   userCollection.update(
-    { _id: mongojs.ObjectId(req.body.id) },
+    { '_id': mongojs.ObjectId(req.body.id) },
     {$set: { done: !req.body.done } },
     () => res.end()
   );

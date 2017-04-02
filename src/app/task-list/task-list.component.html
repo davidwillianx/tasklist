@@ -1,38 +1,3 @@
-<!-- <md-card>
-  <md-card-title>Task List</md-card-title>
-  <md-card-subtitle>These are your current tasks</md-card-subtitle>
-
-  <app-task-form (taskAdded)="taskAddedHandler($event)" ></app-task-form>
-
-  <md-list>
-    <div class="task-item" *ngFor="let task of tasks; trackBy: $index">
-       <p><small><strong>{{ task.createdAt | date: 'short' }}</strong></small></p>
-       <p>{{ task.description }}</p>
-       <button class="delete" md-button md-raised-button
-         color="accent" (click)="deleteTask(task)"
-       > Delete</button>
-
-    </div>
-    <div class="task-item" *ngIf="tasks?.length == 0">
-       <p>Good! There are no pending tasks</p>
-    </div>
-
-  </md-list>
-</md-card> -->
-<!-- <div class="task-list-component">
-   <md-toolbar color="primary">
-    <span><md-icon>assignment</md-icon></span>
-
-     <span class="spacer"></span>
-
-     <button md-icon-button>
-        <md-icon>more_vert</md-icon>
-     </button>
-   </md-toolbar>
-   <md-list>
-   </md-list>
-</div> -->
-
 <div class="container"
      fxLayout
      fxLayout.xs="column"
@@ -67,7 +32,7 @@
                   </h5>
                </div>
 
-               <button class="task-button-check"  md-mini-fab color="Green" (click)="deleteTask(task)" >
+               <button class="task-button-check"  md-mini-fab color="Green" (click)="changeStatusTask(task)" >
                   <md-icon>check</md-icon>
                </button>
              </div>
